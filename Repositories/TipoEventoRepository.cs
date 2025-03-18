@@ -7,9 +7,9 @@ namespace EventPlus_.Repositories
 {
     public class TipoEventoRepository : ITipoEventoRepository
     {
-        private readonly Eventos_Context _context;
+        private readonly EventContext _context;
 
-        public TipoEventoRepository(Eventos_Context context)
+        public TipoEventoRepository(EventContext context)
         {
             _context = context;
         }
@@ -18,7 +18,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TiposEventos.Find(id)!;
 
                 if (tipoEventoBuscado != null)
                 {
@@ -39,7 +39,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TiposEventos.Find(id)!;
                 return tipoEventoBuscado;
 
             }
@@ -53,7 +53,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                _context.TipoEvento.Add(novoTipoEvento);
+                _context.TiposEventos.Add(novoTipoEvento);
 
                 _context.SaveChanges();
             }
@@ -67,11 +67,11 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TiposEventos.Find(id)!;
 
                 if (tipoEventoBuscado != null)
                 {
-                    _context.TipoEvento.Remove(tipoEventoBuscado);
+                    _context.TiposEventos.Remove(tipoEventoBuscado);
                 }
 
                 _context.SaveChanges();
@@ -87,7 +87,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                List<TipoEvento> listaDeEventos = _context.TipoEvento.ToList();
+                List<TipoEvento> listaDeEventos = _context.TiposEventos.ToList();
                 return listaDeEventos;
 
             }

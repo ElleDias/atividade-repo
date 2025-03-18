@@ -2,7 +2,7 @@
 
 namespace EventPlus_.Interfaces
 {
-    public interface IPresencasRepository
+    public interface IPresencasEventoRepository
     {
         void Deletar(Guid id);
 

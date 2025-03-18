@@ -2,7 +2,7 @@
 
 namespace EventPlus_.Interfaces
 {
-    public interface IEventoRepository
+    public interface IEventosRepository
     {
         List<Eventos> Listar();
 

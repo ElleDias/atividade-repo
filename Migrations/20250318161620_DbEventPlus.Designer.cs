@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventPlus_.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20250313163120_Add-Migration EventosPlus")]
-    partial class AddMigrationEventosPlus
+    [Migration("20250318161620_DbEventPlus")]
+    partial class DbEventPlus
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

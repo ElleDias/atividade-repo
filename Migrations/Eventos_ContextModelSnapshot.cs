@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventPlus_.Migrations
 {
-    [DbContext(typeof(Eventos_Context))]
+    [DbContext(typeof(EventContext))]
     partial class Eventos_ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
