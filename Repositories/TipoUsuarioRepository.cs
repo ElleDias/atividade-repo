@@ -1,0 +1,100 @@
+﻿using EventPlus_.Context;
+using EventPlus_.Domains;
+using EventPlus_.Interfaces;
+
+namespace EventPlus_.Repositories
+{
+    public class TipoUsuarioRepository : ITipoUsuarioRepository
+    {
+    {
+        private readonly EventContext _context;
+
+        public TipoUsuarioRepository(EventContext context)
+        {
+            _context = context;
+        }
+
+        public void Atualizar(Guid id, TipoUsuario tipoUsuario)
+        {
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = _context.TiposUsuarios.Find(id)!;
+
+                if (tipoUsuarioBuscado != null)
+                {
+                    tipoUsuarioBuscado.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario;
+                }
+
+                _context.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public TipoUsuario BuscarPorId(Guid id)
+        {
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = _context.TiposUsuarios.Find(id)!;
+                return tipoUsuarioBuscado;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Cadastrar(TipoUsuario novoTipoUsuario)
+        {
+            try
+            {
+                _context.TiposUsuarios.Add(novoTipoUsuario);
+
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Deletar(Guid id)
+        {
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = _context.TiposUsuarios.Find(id)!;
+
+                if (tipoUsuarioBuscado != null)
+                {
+                    _context.TiposUsuarios.Remove(tipoUsuarioBuscado);
+                }
+
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<TipoUsuario> Listar()
+        {
+            try
+            {
+                List<TipoUsuario> listaDeUsuarios = _context.TiposUsuarios.ToList();
+                return listaDeUsuarios;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
+}
