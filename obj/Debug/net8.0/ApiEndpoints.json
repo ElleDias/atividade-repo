@@ -447,6 +447,22 @@
   },
   {
     "ContainingType": "EventPlus_.Controller.TipoUsuarioController",
+    "Method": "Delete",
+    "RelativePath": "api/TipoUsuario/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus_.Controller.TipoUsuarioController",
     "Method": "Put",
     "RelativePath": "api/TipoUsuario/{id}",
     "HttpMethod": "PUT",
@@ -461,22 +477,6 @@
       {
         "Name": "tipoUsuario",
         "Type": "EventPlus_.Domains.TipoUsuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EventPlus_.Controller.TipoUsuarioController",
-    "Method": "Delete",
-    "RelativePath": "api/TipoUsuario/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

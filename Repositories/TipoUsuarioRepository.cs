@@ -1,12 +1,12 @@
 ﻿using EventPlus_.Context;
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventPlus_.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
-    
         private readonly EventContext _context;
 
         public TipoUsuarioRepository(EventContext context)
@@ -14,6 +14,7 @@ namespace EventPlus_.Repositories
             _context = context;
         }
 
+        // 🔹 Atualizar um tipo de usuário
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
             try
@@ -26,22 +27,20 @@ namespace EventPlus_.Repositories
                 }
 
                 _context.SaveChanges();
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        // 🔹 Buscar tipo de usuário por ID
         public TipoUsuario BuscarPorId(Guid id)
         {
             try
             {
                 TipoUsuario tipoUsuarioBuscado = _context.TiposUsuarios.Find(id)!;
                 return tipoUsuarioBuscado;
-
             }
             catch (Exception)
             {
@@ -49,12 +48,12 @@ namespace EventPlus_.Repositories
             }
         }
 
+        // 🔹 Cadastrar um novo tipo de usuário
         public void Cadastrar(TipoUsuario novoTipoUsuario)
         {
             try
             {
                 _context.TiposUsuarios.Add(novoTipoUsuario);
-
                 _context.SaveChanges();
             }
             catch (Exception)
@@ -63,6 +62,7 @@ namespace EventPlus_.Repositories
             }
         }
 
+        // 🔹 Deletar um tipo de usuário
         public void Deletar(Guid id)
         {
             try
@@ -78,18 +78,17 @@ namespace EventPlus_.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        // 🔹 Listar todos os tipos de usuários
         public List<TipoUsuario> Listar()
         {
             try
             {
                 List<TipoUsuario> listaDeUsuarios = _context.TiposUsuarios.ToList();
                 return listaDeUsuarios;
-
             }
             catch (Exception)
             {

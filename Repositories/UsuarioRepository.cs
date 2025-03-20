@@ -2,6 +2,8 @@
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
 using EventPlus_.Utils;
+using System;
+using System.Linq;
 
 namespace EventPlus_.Repositories
 {
@@ -11,56 +13,35 @@ namespace EventPlus_.Repositories
 
         public UsuarioRepository(EventContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public Usuario BuscarPorEmailESenha(string email, string senha)
+        public Usuario? BuscarPorEmailESenha(string email, string senha)
         {
-            Usuario usuarioBuscado = _context.Usuarios.FirstOrDefault(u => u.Email == email)!;
+            var usuarioBuscado = _context.Usuarios.FirstOrDefault(u => u.Email == email);
 
-            if (usuarioBuscado != null)
+            if (usuarioBuscado != null && Criptografia.CompararHash(senha, usuarioBuscado.Senha))
             {
-                bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha)!;
-
-                if (confere)
-                {
-                    return usuarioBuscado;
-                }
+                return usuarioBuscado;
             }
-            return null!;
+
+            return null;
         }
 
-        public Usuario BuscarPorId(Guid id)
+        public Usuario? BuscarPorId(Guid id)
         {
-            try
-            {
-                Usuario usuarioBuscado = _context.Usuarios.Find(id)!;
-
-                if (usuarioBuscado != null)
-                {
-                    return usuarioBuscado;
-                }
-                return null!;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return _context.Usuarios.Find(id);
         }
 
-        public void Cadastrar(Usuario novoUsuario)                          
-        {                                                   
-            try
+        public void Cadastrar(Usuario novoUsuario)
+        {
+            if (novoUsuario == null)
             {
-                _context.Usuarios.Add(novoUsuario);
+                throw new ArgumentNullException(nameof(novoUsuario));
+            }
 
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _context.Usuarios.Add(novoUsuario);
+            _context.SaveChanges();
         }
     }
 }

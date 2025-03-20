@@ -1,5 +1,6 @@
 ﻿using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using EventPlus_.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,19 +10,11 @@ namespace EventPlus_.Controller
     [ApiController]
     public class PresencasEventoController : ControllerBase
     {
-
         private readonly IPresencasEventoRepository _presencasRepository;
 
         public PresencasEventoController(IPresencasEventoRepository presencasRepository)
         {
             _presencasRepository = presencasRepository;
-        }
-
-        // 🔹 Listar todas as presenças
-        [HttpGet]
-        public ActionResult<List<Presenca>> Listar()
-        {
-            return Ok(_presencasRepository.Listar());
         }
 
         // 🔹 Buscar presença por ID
@@ -35,6 +28,14 @@ namespace EventPlus_.Controller
 
             return Ok(presenca);
         }
+
+        // 🔹 Listar todas as presenças
+        [HttpGet]
+        public ActionResult<List<Presenca>> Listar()
+        {
+            return Ok(_presencasRepository.Listar());
+        }
+
 
         // 🔹 Listar minhas presenças por usuário
         [HttpGet("minhas/{id}")]
@@ -81,4 +82,3 @@ namespace EventPlus_.Controller
         }
     }
 }
-
