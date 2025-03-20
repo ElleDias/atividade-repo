@@ -18,104 +18,86 @@ namespace EventPlus_.Controller
             _tipoUsuarioRepository = tipoUsuarioRepository;
         }
 
-        // 🔹 Listar todos os tipos de usuário
+        //cadastrar
+        [HttpPost]
+        public IActionResult Post(TipoUsuario tipoUsuario)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Cadastrar(tipoUsuario);
+                return StatusCode(201, tipoUsuario);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+
+        //deletar
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(Guid id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Deletar(id);
+                return NoContent();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+        // Listar
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                List<TipoUsuario> listaDeTiposUsuarios = _tipoUsuarioRepository.Listar();
-                return Ok(listaDeTiposUsuarios);
+                List<TipoUsuario> listaDosUsuarios = _tipoUsuarioRepository.Listar();
+                return Ok(listaDosUsuarios);
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(new { message = error.Message });
-            }
-        }
 
-        // 🔹 Cadastrar um novo tipo de usuário
-        [Authorize]
-        [HttpPost]
-        public IActionResult Post([FromBody] TipoUsuario novoTipoUsuario)
-        {
-            try
-            {
-                if (novoTipoUsuario == null)
-                    return BadRequest("Dados inválidos.");
-
-                // Validar TituloTipoUsuario, pois ele é obrigatório
-                if (string.IsNullOrEmpty(novoTipoUsuario.TituloTipoUsuario))
-                    return BadRequest("O título do tipo de usuário é obrigatório.");
-
-                _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
-
-                return CreatedAtAction(nameof(GetById), new { id = novoTipoUsuario.TipoUsuarioID }, novoTipoUsuario);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Erro interno: {ex.Message}");
+                return BadRequest(e.Message);
             }
         }
 
 
-        // 🔹 Buscar um tipo de usuário por ID
+
+        // Buscar por Id
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
             try
             {
                 TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarPorId(id);
-
-                if (tipoUsuarioBuscado == null)
-                    return NotFound(new { message = "Tipo de usuário não encontrado." });
-
                 return Ok(tipoUsuarioBuscado);
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(new { message = error.Message });
+
+                return BadRequest(e.Message);
             }
         }
-
-        // 🔹 Deletar um tipo de usuário
-        [Authorize]
-        [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
-        {
-            try
-            {
-                var tipoUsuarioExistente = _tipoUsuarioRepository.BuscarPorId(id);
-
-                if (tipoUsuarioExistente == null)
-                    return NotFound(new { message = "Tipo de usuário não encontrado." });
-
-                _tipoUsuarioRepository.Deletar(id);
-                return NoContent();
-            }
-            catch (Exception error)
-            {
-                return BadRequest(new { message = error.Message });
-            }
-        }
-
-        // 🔹 Atualizar um tipo de usuário existente
-        [Authorize]
+        // Atualizar 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] TipoUsuario tipoUsuario)
+        public IActionResult Put(Guid id, TipoUsuario tiposUsuarios)
         {
             try
             {
-                var tipoUsuarioExistente = _tipoUsuarioRepository.BuscarPorId(id);
-
-                if (tipoUsuarioExistente == null)
-                    return NotFound(new { message = "Tipo de usuário não encontrado." });
-
-                _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
+                _tipoUsuarioRepository.Atualizar(id, tiposUsuarios);
                 return NoContent();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(new { message = error.Message });
+
+                return BadRequest(e.Message);
             }
         }
     }

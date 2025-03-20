@@ -80,7 +80,6 @@ namespace EventPlus_.Controller
                 return BadRequest(error.Message);
             }
         }
-
     }
 }
 

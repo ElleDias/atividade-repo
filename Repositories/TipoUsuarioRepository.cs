@@ -20,7 +20,6 @@ namespace EventPlus_.Repositories
             try
             {
                 TipoUsuario tipoUsuarioBuscado = _context.TiposUsuarios.Find(id)!;
-
                 if (tipoUsuarioBuscado != null)
                 {
                     tipoUsuarioBuscado.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario;
@@ -30,6 +29,7 @@ namespace EventPlus_.Repositories
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -44,8 +44,10 @@ namespace EventPlus_.Repositories
             }
             catch (Exception)
             {
+
                 throw;
             }
+        
         }
 
         // 🔹 Cadastrar um novo tipo de usuário
@@ -58,6 +60,7 @@ namespace EventPlus_.Repositories
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -73,11 +76,11 @@ namespace EventPlus_.Repositories
                 {
                     _context.TiposUsuarios.Remove(tipoUsuarioBuscado);
                 }
-
                 _context.SaveChanges();
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
