@@ -13,7 +13,7 @@ namespace EventPlus_.Repositories
             _context = context;
         }
 
-        public ComentarioEvento BuscarPorIdUsuario(Guid UsuarioID, Guid EventosID)
+        public ComentarioEvento  BuscarPorIdUsuario(Guid UsuarioID, Guid EventosID)
         {
             try
             {

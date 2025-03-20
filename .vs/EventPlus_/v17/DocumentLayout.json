@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\comentarioeventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:repositories\\comentarioeventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\presencaseventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:repositories\\presencaseventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\eventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:repositories\\eventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,14 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\domains\\comentarioevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:domains\\comentarioevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\comentarioeventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:repositories\\comentarioeventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\presencaseventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|solutionrelative:repositories\\presencaseventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2827CA0A-6FA1-4269-AB89-F1DE897BF8E9}|EventPlus_.csproj|c:\\users\\56184436864\\desktop\\eventplus_apisenai\\repositories\\tipoeventorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -122,37 +122,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ComentarioEventoController.cs",
-              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\ComentarioEventoController.cs",
-              "RelativeDocumentMoniker": "Controller\\ComentarioEventoController.cs",
-              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\ComentarioEventoController.cs",
-              "RelativeToolTip": "Controller\\ComentarioEventoController.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAADwv1EAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:47:35.338Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TipoUsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\TipoUsuarioController.cs",
-              "RelativeDocumentMoniker": "Controller\\TipoUsuarioController.cs",
-              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\TipoUsuarioController.cs",
-              "RelativeToolTip": "Controller\\TipoUsuarioController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAFkAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T17:45:43.331Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "TipoUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\TipoUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\TipoUsuarioRepository.cs",
@@ -160,12 +134,11 @@
               "RelativeToolTip": "Repositories\\TipoUsuarioRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:32:59.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T12:32:59.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ITipoUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Interfaces\\ITipoUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\ITipoUsuarioRepository.cs",
@@ -173,25 +146,24 @@
               "RelativeToolTip": "Interfaces\\ITipoUsuarioRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T16:20:56.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T16:20:56.265Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "EventoRepository.cs",
               "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\EventoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\EventoRepository.cs",
               "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\EventoRepository.cs",
               "RelativeToolTip": "Repositories\\EventoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T12:44:28.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Eventos.cs",
               "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Domains\\Eventos.cs",
               "RelativeDocumentMoniker": "Domains\\Eventos.cs",
@@ -199,12 +171,61 @@
               "RelativeToolTip": "Domains\\Eventos.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAqwA0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T14:49:28.053Z",
+              "WhenOpened": "2025-03-20T14:49:28.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PresencasEventoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\PresencasEventoRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\PresencasEventoRepository.cs",
+              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\PresencasEventoRepository.cs",
+              "RelativeToolTip": "Repositories\\PresencasEventoRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T12:44:11.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComentarioEventoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\ComentarioEventoRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ComentarioEventoRepository.cs",
+              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\ComentarioEventoRepository.cs",
+              "RelativeToolTip": "Repositories\\ComentarioEventoRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T13:54:39.968Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "TipoUsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\TipoUsuarioController.cs",
+              "RelativeDocumentMoniker": "Controller\\TipoUsuarioController.cs",
+              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\TipoUsuarioController.cs",
+              "RelativeToolTip": "Controller\\TipoUsuarioController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAFkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T17:45:43.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ComentarioEventoController.cs",
+              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\ComentarioEventoController.cs",
+              "RelativeDocumentMoniker": "Controller\\ComentarioEventoController.cs",
+              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Controller\\ComentarioEventoController.cs",
+              "RelativeToolTip": "Controller\\ComentarioEventoController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAADwv1EAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T12:47:35.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ComentarioEvento.cs",
               "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Domains\\ComentarioEvento.cs",
               "RelativeDocumentMoniker": "Domains\\ComentarioEvento.cs",
@@ -212,21 +233,7 @@
               "RelativeToolTip": "Domains\\ComentarioEvento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T19:20:39.593Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PresencasEventoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\PresencasEventoRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\PresencasEventoRepository.cs",
-              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\PresencasEventoRepository.cs",
-              "RelativeToolTip": "Repositories\\PresencasEventoRepository.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAswA0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:44:11.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T19:20:39.593Z"
             },
             {
               "$type": "Document",
@@ -238,8 +245,7 @@
               "RelativeToolTip": "Repositories\\TipoEventoRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T17:40:00.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T17:40:00.59Z"
             },
             {
               "$type": "Document",
@@ -251,21 +257,7 @@
               "RelativeToolTip": "Interfaces\\IEventoRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:55:46.391Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ComentarioEventoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\ComentarioEventoRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ComentarioEventoRepository.cs",
-              "ToolTip": "C:\\Users\\56184436864\\Desktop\\EventPlus_ApiSenai\\Repositories\\ComentarioEventoRepository.cs",
-              "RelativeToolTip": "Repositories\\ComentarioEventoRepository.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAkwEUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T13:54:39.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T12:55:46.391Z"
             },
             {
               "$type": "Document",
