@@ -9,11 +9,11 @@ namespace EventPlus_.Repositories
         
             private readonly EventContext _context;
 
+
             public EventoRepository(EventContext context)
             {
                 _context = context;
             }
-
         public void Atualizar(Guid id, Eventos evento)
         {
             try

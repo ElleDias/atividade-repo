@@ -12,94 +12,97 @@ namespace EventPlus_.Controller
     public class TipoEventoController : ControllerBase
     {
         private readonly ITipoEventoRepository _tipoEventoRepository;
-
         public TipoEventoController(ITipoEventoRepository tipoEventoRepository)
         {
             _tipoEventoRepository = tipoEventoRepository;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            try
-            {
-                List<TipoEvento> listadetipoevento = _tipoEventoRepository.Listar();
-                return Ok(listadetipoevento);
-            }
-            catch (Exception error)
-            {
-
-                return BadRequest(error.Message);
-            }
-        }
-     
-
-        [Authorize]
+        //---------------------------------------------------------------------------------
+        // Cadastrar
         [HttpPost]
-        public IActionResult Post(TipoEvento novoTipoEvento)
+        public IActionResult Post(TipoEvento tipoEvento)
         {
             try
             {
-                _tipoEventoRepository.Cadastrar(novoTipoEvento);
+                _tipoEventoRepository.Cadastrar(tipoEvento);
 
-                // Retornar o status de criação com o ID do novo tipo de evento
-                return CreatedAtAction(nameof(Get), new { id = novoTipoEvento.TipoEventoID }, novoTipoEvento);
+                return Created();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+
+                return BadRequest(e.Message);
             }
         }
 
-        [HttpGet("BuscarPorId/{id}")]
-        public IActionResult GetById(Guid id)
-        {
-
-            try
-            {
-                TipoEvento tipoEventoBuscado = _tipoEventoRepository.BuscarPorId(id);
-                return Ok(tipoEventoBuscado);
-            }
-            catch (Exception error)
-            {
-
-                return BadRequest(error.Message);
-            }
-        }
-       
-        [Authorize]
+        //---------------------------------------------------------------------------------
+        // Deletar
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult DeleteById(Guid id)
         {
             try
             {
                 _tipoEventoRepository.Deletar(id);
                 return NoContent();
-
             }
             catch (Exception)
             {
 
                 throw;
             }
-
         }
-        
-        [Authorize]
-        [HttpPut("id")]
+
+        //---------------------------------------------------------------------------------
+        // Listar
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<TipoEvento> listaDeEventos = _tipoEventoRepository.Listar();
+                return Ok(listaDeEventos);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+        //---------------------------------------------------------------------------------
+        // Buscar Por Id
+        [HttpGet("BuscarPorId/{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                TipoEvento tipoEventoBuscado = _tipoEventoRepository.BuscarPorId(id);
+                return Ok(tipoEventoBuscado);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+        //---------------------------------------------------------------------------------
+        // Atualizar 
+        [HttpPut("{id}")]
         public IActionResult Put(Guid id, TipoEvento tipoEvento)
         {
             try
             {
                 _tipoEventoRepository.Atualizar(id, tipoEvento);
+
                 return NoContent();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
 
-                return BadRequest(error.Message);
+                return BadRequest(e.Message);
             }
-        }
 
+        }
     }
 }
