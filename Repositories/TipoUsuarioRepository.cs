@@ -6,7 +6,7 @@ namespace EventPlus_.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
-    {
+    
         private readonly EventContext _context;
 
         public TipoUsuarioRepository(EventContext context)

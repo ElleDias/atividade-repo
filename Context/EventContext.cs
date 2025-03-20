@@ -13,7 +13,6 @@ namespace EventPlus_.Context
         public EventContext(DbContextOptions<EventContext> options) : base(options) 
         {
         }
-
         public DbSet<ComentarioEvento> ComentariosEventos { get; set; }
         public DbSet<Eventos> Evento { get; set; }
         public DbSet<Instituicao> Instituicoes { get; set; }
