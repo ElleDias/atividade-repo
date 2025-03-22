@@ -10,11 +10,11 @@ Atualmente, o projeto está no **início** e em fase de desenvolvimento. A API e
 
 ## Tabela de Conteúdos:
 ### Features:
-- [x] O administrador poderá cadastrar qualquer tipo de usuário;
-- [x] O administrador poderá cadastrar os tipos de eventos;
-- [x] Qualquer usuário autenticado poderá ver todos os eventos cadastrados;
-- [x] O usuário comum poderá ver os eventos que participará;
-- [x] O usuário comum poderá se inscrever para assistir a um evento ou cancelar a sua inscrição
+- [ ] O administrador poderá cadastrar qualquer tipo de usuário;
+- [ ] O administrador poderá cadastrar os tipos de eventos;
+- [ ] Qualquer usuário autenticado poderá ver todos os eventos cadastrados;
+- [ ] O usuário comum poderá ver os eventos que participará;
+- [ ] O usuário comum poderá se inscrever para assistir a um evento ou cancelar a sua inscrição
 
 ---
 
