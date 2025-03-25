@@ -1,10 +1,8 @@
 ﻿using EventPlus_.Domains;
 using EventPlus_.Interfaces;
-using EventPlus_.Repositories;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace EventPlus_.Controller
 {
@@ -13,87 +11,122 @@ namespace EventPlus_.Controller
     [Produces("application/json")]
     public class EventoController : ControllerBase
     {
-        private readonly IEventoRepository _eventosRepository;
+        private readonly IEventoRepository _eventoRepository;
 
-        public EventoController(IEventoRepository eventosRepository)
+        public EventoController(IEventoRepository eventoRepository)
         {
-            _eventosRepository = eventosRepository;
+            _eventoRepository = eventoRepository;
         }
 
-        // 🔹 Listar todos os eventos
         [HttpGet]
-        public ActionResult<List<Eventos>> Listar()
+        public IActionResult Get()
         {
-            return Ok(_eventosRepository.Listar());
+            try
+            {
+                return Ok(_eventoRepository.Listar());
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
-        // 🔹 Buscar evento por ID
-        [HttpGet("{id}")]
-        public ActionResult<Eventos> BuscarPorId(Guid id)
-        {
-            var evento = _eventosRepository.BuscarPorId(id);
-
-            if (evento == null)
-                return NotFound("Evento não encontrado.");
-
-            return Ok(evento);
-        }
-
-        // 🔹 Cadastrar um novo evento
+        /// <summary>
+        /// Endpoint para cadastras Eventos
+        /// </summary>
+        /// <param name="novoEvento"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Cadastrar([FromBody] Eventos evento)
+        public IActionResult Post(Eventos evento)
         {
-            if (evento == null)
-                return BadRequest("Dados inválidos.");
+            try
+            {
+                _eventoRepository.Cadastrar(evento);
+                return Created();
+            }
+            catch (Exception e)
+            {
 
-            _eventosRepository.Cadastrar(evento);
-
-            // Certifique-se de que o ID foi gerado corretamente
-            if (evento.EventosID == Guid.Empty)
-                return BadRequest("Falha ao cadastrar o evento.");
-
-            return CreatedAtAction(nameof(BuscarPorId), new { id = evento.EventosID }, evento);
+                return BadRequest(e.Message);
+            }
         }
 
-        // 🔹 Atualizar um evento existente
-        [HttpPut("{id}")]
-        public ActionResult Atualizar(Guid id, [FromBody] Eventos evento)
-        {
-            var eventoExistente = _eventosRepository.BuscarPorId(id);
-
-            if (eventoExistente == null)
-                return NotFound("Evento não encontrado.");
-
-            _eventosRepository.Atualizar(id, evento);
-            return NoContent();
-        }
-
-        // 🔹 Deletar um evento
+        /// <summary>
+        /// Endpoint para Deletar Eventos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public ActionResult Deletar(Guid id)
+        public IActionResult Delete(Guid id)
         {
-            var eventoExistente = _eventosRepository.BuscarPorId(id);
+            try
+            {
+                _eventoRepository.Deletar(id);
+                return NoContent();
+            }
+            catch (Exception)
+            {
 
-            if (eventoExistente == null)
-                return NotFound("Evento não encontrado.");
-
-            _eventosRepository.Deletar(id);
-            return NoContent();
+                throw;
+            }
         }
 
-        // 🔹 Listar eventos por ID (parece redundante com BuscarPorId, então pode ser alterado)
-        [HttpGet("listarPorId/{id}")]
-        public ActionResult<List<Eventos>> ListarPorId(Guid id)
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, Eventos evento)
         {
-            return Ok(_eventosRepository.ListarPorId(id));
+            try
+            {
+                _eventoRepository.Atualizar(id, evento);
+                return StatusCode (204, evento);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
-        // 🔹 Listar próximos eventos
-        [HttpGet("proximos/{id}")]
-        public ActionResult<List<Eventos>> ListarProximosEventos(Guid id)
+        /// <summary>
+        /// Endpoint para Listar Proximos Eventos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarProximosEventos/{id}")]
+        public IActionResult Get(Guid id)
         {
-            return Ok(_eventosRepository.ListarProximosEventos(id));
+            try
+            {
+                List<Eventos> listarEvento = _eventoRepository.ListarProximosEventos(id);
+                return Ok(listarEvento);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Endpoint para Listar Eventos por Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarPorId/{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                List<Eventos> listarEvento = _eventoRepository.ListarPorId(id);
+                return Ok(listarEvento);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
-

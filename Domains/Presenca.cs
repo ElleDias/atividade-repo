@@ -1,29 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EventPlus_.Domains;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace EventPlus_.Domains
-{
     [Table("Presenca")]
     public class Presenca
-    {
-        [Key]
-        public Guid PresencaID { get; set; }
+{
+    [Key]
+    public Guid PresencaID { get; set; }
 
-        [Column(TypeName = "BIT")]
-        public bool? Situacao { get; set; }
+    public Guid EventoID { get; set; }
+    [ForeignKey("EventoID")]
+    public Eventos Evento { get; set; }
 
+    public Guid UsuarioID { get; set; }
+    [ForeignKey("UsuarioID")]
+    public Usuario Usuario { get; set; }
 
-        [Required(ErrorMessage = "O usuario é obrigatório")]
-        public Guid UsuarioID { get; set; }
-
-        [ForeignKey("UsuarioID")]
-        public Usuario? Usuario { get; set; }
-
-
-        [Required(ErrorMessage = "O evento é obrigatório")]
-        public Guid EventosID { get; set; }
-
-        [ForeignKey("EventosID")]
-        public Eventos? Eventos { get; set; }
-    }
+    [Column(TypeName = "BIT")]
+    public bool? Situacao { get; set; }
 }
+    

@@ -1,6 +1,7 @@
 ﻿using EventPlus_.Context;
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace EventPlus_.Repositories
 {
@@ -13,26 +14,44 @@ namespace EventPlus_.Repositories
             _context = context;
         }
 
-        public ComentarioEvento  BuscarPorIdUsuario(Guid UsuarioID, Guid EventosID)
+        public ComentarioEvento BuscarPorIdUsuario(Guid UsuarioID, Guid EventosID)
         {
             try
             {
-                ComentarioEvento comentarioEventoBuscado = _context.ComentariosEventos
-                    .FirstOrDefault(c => c.UsuarioID == UsuarioID && c.EventosID == EventosID)!;
+                return _context.ComentariosEventos
+                    .Select(c => new ComentarioEvento
+                    {
+                        ComentarioEventoID = c.ComentarioEventoID,
+                        Descricao = c.Descricao,
+                        Exibe = c.Exibe,
+                        UsuarioID = c.UsuarioID,
+                        EventosID = c.EventosID,
 
-                return comentarioEventoBuscado;
+                        Usuario = new Usuario
+                        {
+                            Nome = c.Usuario!.Nome
+                        },
+
+                        Eventos = new Eventos
+                        {
+                            NomeEvento = c.Eventos!.NomeEvento,
+                        }
+                    }).FirstOrDefault(c => c.UsuarioID == UsuarioID && c.EventosID == EventosID)!;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Erro ao buscar o comentário do usuário no evento.", ex);
+                throw;
             }
+
         }
 
-        public void Cadastrar(ComentarioEvento novoComentarioEvento)
+        public void Cadastrar(ComentarioEvento comentarioEvento)
         {
             try
             {
-                _context.ComentariosEventos.Add(novoComentarioEvento);
+                comentarioEvento.ComentarioEventoID = Guid.NewGuid();
+
+                _context.ComentariosEventos.Add(comentarioEvento);
 
                 _context.SaveChanges();
             }
@@ -40,33 +59,60 @@ namespace EventPlus_.Repositories
             {
                 throw;
             }
+
         }
 
         public void Deletar(Guid idComentario)
         {
             try
             {
-                List<ComentarioEvento> listaDeComentarioEvento = _context.ComentariosEventos.ToList();
+                ComentarioEvento comentarioEventoBuscado = _context.ComentariosEventos.Find()!;
 
+                if (comentarioEventoBuscado != null)
+                {
+                    _context.ComentariosEventos.Remove(comentarioEventoBuscado);
+                }
+
+                _context.SaveChanges();
             }
             catch (Exception)
             {
                 throw;
             }
+
         }
 
-        public List<ComentarioEvento> Listar()
+        public List<ComentarioEvento> Listar(Guid id)
         {
             try
             {
-                List<ComentarioEvento> listaDeComentarioEvento = _context.ComentariosEventos.ToList();
-                return listaDeComentarioEvento;
+                return _context.ComentariosEventos
+                    .Select(c => new ComentarioEvento
+                    {
+                        ComentarioEventoID = c.ComentarioEventoID,
+                        Descricao = c.Descricao,
+                        Exibe = c.Exibe,
+                        UsuarioID = c.UsuarioID,
+                        EventosID = c.EventosID,
 
+                        Usuario = new Usuario
+                        {
+                            Nome = c.Usuario!.Nome
+                        },
+
+                        Eventos = new Eventos
+                        {
+                            NomeEvento = c.Eventos!.NomeEvento,
+                        }
+
+                    }).Where(c => c.EventosID == id).ToList();
             }
             catch (Exception)
             {
+
                 throw;
             }
+
         }
     }
 }

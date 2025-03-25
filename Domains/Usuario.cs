@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventPlus_.Domains
 {
+
     [Table("Usuario")]
     [Index(nameof(Email), IsUnique = true)]
     public class Usuario
@@ -11,28 +12,24 @@ namespace EventPlus_.Domains
         [Key]
         public Guid UsuarioID { get; set; }
 
-
-        [Column(TypeName = "VARCHAR(50)")]
-        [Required(ErrorMessage = "O nome é obrigatório!")]
-        public string? Nome { get; set; }
-
-
-        [Column(TypeName = "VARCHAR(50)")]
-        [Required(ErrorMessage = "O email é obrigatório!")]
-        public string? Email { get; set; }
-
-
-        [Column(TypeName = "VARCHAR(60)")]
-        [Required(ErrorMessage = "A senha é obrigatória")]
-        [StringLength(60, MinimumLength = 6, ErrorMessage = "a senha deve conter no mínimo 6 caracteres e no máximo 60")]
-        public string? Senha { get; set; }
-
-
-        [Required(ErrorMessage = "O tipo usuário é obrigatório!")]
+        [Required(ErrorMessage = "O tipo de usuário é obrigatorio!")]
         public Guid TipoUsuarioID { get; set; }
 
         [ForeignKey("TipoUsuarioID")]
-        public TipoUsuario? TipoUsuarios{ get; set; }
+        public TipoUsuario? TipoUsuario { get; set; }
 
+        [Column(TypeName = "VARCHAR(50)")]
+        [Required(ErrorMessage = "O nome é obrigatório")]
+        public string? Nome { get; set; }
+
+        [Column(TypeName = "VARCHAR(100)")]
+        [Required(ErrorMessage = "O Email é obrigatorio")]
+        public string? Email { get; set; }
+
+        [Column(TypeName = "VARCHAR(60)")]
+        [Required(ErrorMessage = "A senha é obrigatoria")]
+        [StringLength(60, MinimumLength = 6, ErrorMessage = "A senha deve conter no minimo 6 caracteres, e no maximo 60")]
+        public string? Senha { get; set; }
     }
+
 }

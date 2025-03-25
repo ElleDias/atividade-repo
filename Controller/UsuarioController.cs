@@ -5,69 +5,51 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventPlus_.Controller
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    [Produces("application/json")]
-    public class UsuarioController : ControllerBase
-    {
-        private readonly IUsuarioRepository _usuarioRepository;
+        [Route("api/[controller]")]
+        [ApiController]
+        [Produces("application/json")]
+        public class UsuarioController : ControllerBase
+        {
+            private readonly IUsuarioRepository _usuarioRepository;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository)
-        {
-            _usuarioRepository = usuarioRepository;
-        }
-        [HttpPost]
-        public IActionResult Post(Usuario usuario)
-        {
-            try
+            public UsuarioController(IUsuarioRepository usuarioRepository)
             {
-                _usuarioRepository.Cadastrar(usuario);
-                return Created("", usuario);
+                _usuarioRepository = usuarioRepository;
             }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
 
-        //---------------------------------------------------------------------------------
-        // Buscar Por E-mail e Senha
-        [HttpPost("BuscarPorEmailESenha")]
-        public IActionResult BuscarPorEmailESenha([FromBody] Usuario usuario)
-        {
-            try
+            [HttpGet("{id}")]
+            public IActionResult GetById(Guid id)
             {
-                // Aqui vamos buscar o usuário com base no e-mail e senha.
-                var usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(usuario.Email, usuario.Senha);
-
-                if (usuarioBuscado == null)
+                try
                 {
-                    return NotFound("Usuário não encontrado ou credenciais inválidas.");
+                    Usuario usuarioBuscado = _usuarioRepository.BuscarPorId(id);
+                    if (usuarioBuscado != null)
+                    {
+                        return Ok(usuarioBuscado);
+                    }
+                    return null!;
                 }
+                catch (Exception e)
+                {
 
-                return Ok(usuarioBuscado);
+                    return BadRequest(e);
+                }
             }
-            catch (Exception e)
+
+
+            [HttpPost]
+            public IActionResult Post(Usuario usuario)
             {
-                return BadRequest(e.Message);
+                try
+                {
+                    _usuarioRepository.Cadastrar(usuario);
+                    return StatusCode(201, usuario);
+                }
+                catch (Exception error)
+                {
+
+                    return BadRequest(error.Message);
+                }
             }
         }
-
-        //---------------------------------------------------------------------------------
-        // Buscar Por Id
-        [HttpGet("BuscarPorId/{id}")]
-        public IActionResult GetById(Guid id)
-        {
-            try
-            {
-                var usuarioBuscado = _usuarioRepository.BuscarPorId(id);
-                return Ok(usuarioBuscado);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-    }
 }

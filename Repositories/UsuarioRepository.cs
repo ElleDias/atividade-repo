@@ -8,63 +8,101 @@ using System.Linq;
 namespace EventPlus_.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
-    { 
+    {
         private readonly EventContext _context;
-
-        public UsuarioRepository(EventContext Context)
+        public UsuarioRepository(EventContext context)
         {
-            _context = Context;
+            _context = context;
         }
-        public void Cadastrar(Usuario novoUsuario)
+
+        public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
             {
-                novoUsuario.Senha = Criptografia.GerarHash(novoUsuario.Senha);
+                Usuario usuarioBuscado = _context.Usuarios
+                    .Select(u => new Usuario
+                    {
+                        UsuarioID = u.UsuarioID,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
 
-
-
-                _context.Usuarios.Add(novoUsuario);
-
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public Usuario BuscarPorId(Guid id)
-        {
-            try
-            {
-                Usuario usuarioBuscado = _context.Usuarios.Find(id)!;
+                        TipoUsuario = new TipoUsuario
+                        {
+                            TipoUsuarioID = u.TipoUsuarioID,
+                            TituloTipoUsuario = u.TipoUsuario!.TituloTipoUsuario
+                        }
+                    }).FirstOrDefault(u => u.Email == email)!;
 
                 if (usuarioBuscado != null)
                 {
-                    return usuarioBuscado;
+                    bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
+
+                    if (confere)
+                    {
+                        return usuarioBuscado!;
+                    }
                 }
                 return null!;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
-        public Usuario BuscarPorEmailESenha(string email, string senha)
+        }
+
+        public Usuario BuscarPorId(Guid id)
         {
-            Usuario usuarioBuscado = _context.Usuarios.FirstOrDefault(u => u.Email == email)!;
-
-            if (usuarioBuscado != null)
+            try
             {
-                bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha)!;
+                Usuario usuarioBuscado = _context.Usuarios
+                    .Select(u => new Usuario
+                    {
+                        UsuarioID = u.UsuarioID,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
 
-                if (confere)
+                        TipoUsuario = new TipoUsuario
+                        {
+                            TipoUsuarioID = u.TipoUsuario!.TipoUsuarioID,
+                            TituloTipoUsuario = u.TipoUsuario!.TituloTipoUsuario
+                        }
+
+                    }).FirstOrDefault(u => u.UsuarioID == id)!;
+
+                if (usuarioBuscado != null)
                 {
                     return usuarioBuscado;
+
                 }
+                return null!;
             }
-            return null!;
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Cadastrar(Usuario usuario)
+        {
+            try
+            {
+                usuario.UsuarioID = Guid.NewGuid();
+
+                usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
+
+
+                _context.Usuarios.Add(usuario);
+
+
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -2,19 +2,13 @@
 
 namespace EventPlus_.Interfaces
 {
-    public interface IPresencasEventoRepository
+    public interface IPresencaEventoRepository
     {
-        void Deletar(Guid id);
-
-        Presenca BuscarPorId(Guid id);
-
-        void Atualizar(Guid id, Presenca presenca);
-
         List<Presenca> Listar();
-
-        List<Presenca> ListarMinhasPresencas(Guid id);
-
-        void Inscrever(Presenca inscreverPresenca);
-
+        Presenca BuscarPorId(Guid id);
+        void Atualizar(Guid id, Presenca presenca);
+        void Inscrever(Presenca Inscricao);
+        List<Presenca> ListarMinhas(Guid id);
+        void Deletar(Guid id);
     }
 }

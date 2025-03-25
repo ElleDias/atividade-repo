@@ -8,69 +8,122 @@ namespace EventPlus_.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class PresencaController : ControllerBase
     {
-        private readonly IPresencasEventoRepository _presencaRepository;
-
-        public PresencaController(IPresencasEventoRepository presencaRepository)
+        private readonly IPresencaEventoRepository _presencaRepository;
+        public PresencaController(IPresencaEventoRepository presencaRepository)
         {
             _presencaRepository = presencaRepository;
         }
 
-        [HttpPost("inscrever")]
-        public ActionResult InscreverPresenca([FromBody] Presenca presenca)
+        /// <summary>
+        /// Endpoint para Listar Presenças
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Get()
         {
-            if (presenca == null)
-                return BadRequest("A presença é obrigatória.");
-
-            _presencaRepository.Inscrever(presenca);
-            return Ok("Presença inscrita com sucesso.");
+            try
+            {
+                var listaPresencas = _presencaRepository.Listar();
+                return Ok(listaPresencas);
+            }
+            catch (ApplicationException ex)
+            {
+                // Em caso de erro, detalhar a causa com mais informações
+                return BadRequest($"Erro: {ex.Message}\nDetalhes: {ex.StackTrace}");
+            }
+            catch (Exception e)
+            {
+                // Exceção genérica, caso o erro não seja do tipo ApplicationException
+                return BadRequest($"Erro inesperado: {e.Message}");
+            }
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Presenca> BuscarPorId(Guid id)
+        /// <summary>
+        /// Endpoint para Inscrever(Cadastrar presença)
+        /// </summary>
+        /// <param name="novaPresenca"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Post(Presenca novaPresenca)
         {
-            var presenca = _presencaRepository.BuscarPorId(id);
-            if (presenca == null)
-                return NotFound("Presença não encontrada.");
+            try
+            {
+                _presencaRepository.Inscrever(novaPresenca);
+                return Created();
+            }
+            catch (Exception e)
+            {
 
-            return Ok(presenca);
+                return BadRequest(e.Message);
+            }
+
         }
 
-        [HttpPut("{id}")]
-        public ActionResult AtualizarPresenca(Guid id, [FromBody] Presenca presenca)
+        /// <summary>
+        /// Endpoint para buscar por id as presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("BucarPorId/{id}")]
+        public IActionResult GetById(Guid id)
         {
-            var existingPresenca = _presencaRepository.BuscarPorId(id);
-            if (existingPresenca == null)
-                return NotFound("Presença não encontrada.");
+            try
+            {
+                Presenca presencaBuscada = _presencaRepository.BuscarPorId(id);
+                return Ok(presencaBuscada);
+            }
+            catch (Exception)
+            {
 
-            _presencaRepository.Atualizar(id, presenca);
-            return Ok("Presença atualizada com sucesso.");
+                throw;
+            }
+
         }
 
+        /// <summary>
+        /// Endpoint para deletar presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public ActionResult DeletarPresenca(Guid id)
+        public IActionResult Delete(Guid id)
         {
-            var presenca = _presencaRepository.BuscarPorId(id);
-            if (presenca == null)
-                return NotFound("Presença não encontrada.");
+            try
+            {
+                _presencaRepository.Deletar(id);
+                return NoContent();
+            }
+            catch (Exception)
+            {
 
-            _presencaRepository.Deletar(id);
-            return Ok("Presença deletada com sucesso.");
+                throw;
+            }
+
         }
 
-        [HttpGet("listar")]
-        public ActionResult<List<Presenca>> ListarPresencas()
+        /// <summary>
+        /// Endpoint para listar suas presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarMinhasPresencas/{id}")]
+        public IActionResult Get(Guid id)
         {
-            var presencas = _presencaRepository.Listar();
-            return Ok(presencas);
+            try
+            {
+                List<Presenca> listarMinhasPresencas = _presencaRepository.ListarMinhas(id);
+                return Ok(listarMinhasPresencas);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+
         }
 
-        [HttpGet("listar-minhas/{usuarioId}")]
-        public ActionResult<List<Presenca>> ListarMinhasPresencas(Guid usuarioId)
-        {
-            var presencas = _presencaRepository.ListarMinhasPresencas(usuarioId);
-            return Ok(presencas);
-        }
     }
 }
