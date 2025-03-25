@@ -24,12 +24,11 @@ builder.Services.AddDbContext<EventContext>(options =>
 
 // Injeção de dependência dos repositórios
 builder.Services.AddScoped<ITipoEventoRepository, TipoEventoRepository>();
-builder.Services.AddScoped<ITipoEventoRepository, TipoEventoRepository>();
 builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 builder.Services.AddScoped<IComentarioEventoRepository, ComentarioEventoRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IPresencasEventoRepository, PresencasEventoRepository>();
-
+builder.Services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
 
 //Adiciona o serviço de Controllers
 builder.Services.AddControllers();

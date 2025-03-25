@@ -2,6 +2,9 @@
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EventPlus_.Repositories
 {
@@ -13,24 +16,21 @@ namespace EventPlus_.Repositories
         {
             _context = context;
         }
+
         public void Atualizar(Guid id, Presenca presenca)
         {
             try
             {
-                Presenca presencaBuscado = _context.Presencas.Find(id)!;
-
-                if (presencaBuscado != null)
+                var presencaBuscada = _context.Presencas.Find(id);
+                if (presencaBuscada != null)
                 {
-                    presencaBuscado.Situacao = presenca.Situacao;
+                    presencaBuscada.Situacao = presenca.Situacao;
+                    _context.SaveChanges();
                 }
-
-                _context.SaveChanges();
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Erro ao atualizar presença: " + ex.Message);
             }
         }
 
@@ -38,18 +38,11 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                Presenca presencaBuscado = _context.Presencas.Find(id)!;
-
-                if (presencaBuscado != null)
-                {
-                    return presencaBuscado;
-                }
-                return null!;
+                return _context.Presencas.Find(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Erro ao buscar presença: " + ex.Message);
             }
         }
 
@@ -57,39 +50,44 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                Presenca presencaBuscado = _context.Presencas.Find(id)!;
-
-                if (presencaBuscado != null)
+                var presencaBuscada = _context.Presencas.Find(id);
+                if (presencaBuscada != null)
                 {
-                    _context.Presencas.Remove(presencaBuscado);
+                    _context.Presencas.Remove(presencaBuscada);
+                    _context.SaveChanges();
                 }
-
-                _context.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Erro ao deletar presença: " + ex.Message);
             }
         }
 
-        public void Inscrever(Presenca inscreverPresenca)
+        public void Inscrever(Presenca presenca)
         {
-          
+            try
+            {
+                if (presenca != null)
+                {
+                    _context.Presencas.Add(presenca);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao inscrever presença: " + ex.Message);
+            }
         }
 
         public List<Presenca> Listar()
         {
-
             try
             {
-                List<Presenca> listaDePresenca = _context.Presencas.ToList();
-                return listaDePresenca;
-
+                return _context.Presencas.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("Erro ao listar presenças: " + ex.Message);
             }
         }
 
@@ -97,15 +95,13 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                List<Presenca> minhasPresencas = _context.Presencas
-                    .Where(p => p.UsuarioID == id) // Filtra as presenças pelo ID do usuário
+                return _context.Presencas
+                    .Where(p => p.UsuarioID == id)
                     .ToList();
-
-                return minhasPresencas;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("Erro ao listar minhas presenças: " + ex.Message);
             }
         }
     }

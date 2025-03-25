@@ -4,12 +4,12 @@ namespace EventPlus_.Interfaces
 {
     public interface IUsuarioRepository
     {
-            void Cadastrar(Usuario novoUsuario);
+            void Cadastrar(Usuario usuario);
 
             Usuario BuscarPorId(Guid id);
 
             Usuario BuscarPorEmailESenha(string email, string senha);
-
         }
     }
+    
 

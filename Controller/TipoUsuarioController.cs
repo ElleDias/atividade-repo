@@ -12,29 +12,31 @@ namespace EventPlus_.Controller
     public class TipoUsuarioController : ControllerBase
     {
         private readonly ITipoUsuarioRepository _tipoUsuarioRepository;
-
         public TipoUsuarioController(ITipoUsuarioRepository tipoUsuarioRepository)
         {
             _tipoUsuarioRepository = tipoUsuarioRepository;
         }
 
-        //cadastrar
+        //---------------------------------------------------------------------------------
+        // Cadastrar
         [HttpPost]
         public IActionResult Post(TipoUsuario tipoUsuario)
         {
             try
             {
                 _tipoUsuarioRepository.Cadastrar(tipoUsuario);
-                return StatusCode(201, tipoUsuario);
+
+                return Created();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+
+                return BadRequest(e.Message);
             }
         }
 
-
-        //deletar
+        //---------------------------------------------------------------------------------
+        // Deletar
         [HttpDelete("{id}")]
         public IActionResult DeleteById(Guid id)
         {
@@ -50,16 +52,15 @@ namespace EventPlus_.Controller
             }
         }
 
-
-
+        //---------------------------------------------------------------------------------
         // Listar
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                List<TipoUsuario> listaDosUsuarios = _tipoUsuarioRepository.Listar();
-                return Ok(listaDosUsuarios);
+                List<TipoUsuario> listaDeUsuarios = _tipoUsuarioRepository.Listar();
+                return Ok(listaDeUsuarios);
             }
             catch (Exception e)
             {
@@ -68,9 +69,8 @@ namespace EventPlus_.Controller
             }
         }
 
-
-
-        // Buscar por Id
+        //---------------------------------------------------------------------------------
+        // Buscar Por Id
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -85,13 +85,16 @@ namespace EventPlus_.Controller
                 return BadRequest(e.Message);
             }
         }
+
+        //---------------------------------------------------------------------------------
         // Atualizar 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, TipoUsuario tiposUsuarios)
+        public IActionResult Put(Guid id, TipoUsuario tipoUsuario)
         {
             try
             {
-                _tipoUsuarioRepository.Atualizar(id, tiposUsuarios);
+                _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
+
                 return NoContent();
             }
             catch (Exception e)

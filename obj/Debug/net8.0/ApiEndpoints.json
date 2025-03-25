@@ -216,45 +216,9 @@
     ]
   },
   {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
-    "Method": "Listar",
-    "RelativePath": "api/PresencasEvento",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[EventPlus_.Domains.Presenca, EventPlus_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
-    "Method": "Inscrever",
-    "RelativePath": "api/PresencasEvento",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "inscreverPresenca",
-        "Type": "EventPlus_.Domains.Presenca",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
     "Method": "BuscarPorId",
-    "RelativePath": "api/PresencasEvento/{id}",
+    "RelativePath": "api/Presenca/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -278,9 +242,9 @@
     ]
   },
   {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
-    "Method": "Atualizar",
-    "RelativePath": "api/PresencasEvento/{id}",
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
+    "Method": "AtualizarPresenca",
+    "RelativePath": "api/Presenca/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -299,9 +263,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
-    "Method": "Deletar",
-    "RelativePath": "api/PresencasEvento/{id}",
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
+    "Method": "DeletarPresenca",
+    "RelativePath": "api/Presenca/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -315,15 +279,51 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EventPlus_.Controller.PresencasEventoController",
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
+    "Method": "InscreverPresenca",
+    "RelativePath": "api/Presenca/inscrever",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "presenca",
+        "Type": "EventPlus_.Domains.Presenca",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
+    "Method": "ListarPresencas",
+    "RelativePath": "api/Presenca/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EventPlus_.Domains.Presenca, EventPlus_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EventPlus_.Controllers.PresencaController",
     "Method": "ListarMinhasPresencas",
-    "RelativePath": "api/PresencasEvento/minhas/{id}",
+    "RelativePath": "api/Presenca/listar-minhas/{usuarioId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "usuarioId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -475,7 +475,7 @@
         "IsRequired": true
       },
       {
-        "Name": "tiposUsuarios",
+        "Name": "tipoUsuario",
         "Type": "EventPlus_.Domains.TipoUsuario",
         "IsRequired": true
       }

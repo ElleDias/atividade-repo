@@ -15,7 +15,7 @@ namespace EventPlus_.Domains
         [Column(TypeName = "TEXT")]
         [Required(ErrorMessage = "Descrição do evento obrigatória!")]
         public string? Descricao { get; set; }
-
+        s
 
         [Required(ErrorMessage = "O usuario é obrigatório")]
         public Guid UsuarioID { get; set; }

@@ -7,6 +7,13 @@ namespace EventPlus_.Repositories
 {
     public class TipoEventoRepository : ITipoEventoRepository
     {
+        private readonly EventContext _context;
+
+        public TipoEventoRepository(EventContext context)
+        {
+            _context = context;
+        }
+       
         public void Atualizar(Guid id, TipoEvento tipoEvento)
         {
             TipoEvento tipoeventoBuscado = _context.TiposEventos.Find(id)!;
@@ -62,14 +69,6 @@ namespace EventPlus_.Repositories
             List<TipoEvento> ListaEvento = _context.TiposEventos.ToList();
             return ListaEvento;
         }
-        private readonly EventContext _context;
-
-        public TipoEventoRepository(EventContext context)
-        {
-            _context = context;
-        }
-       
-
 
     }
 }
