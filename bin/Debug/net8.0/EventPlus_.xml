@@ -45,13 +45,6 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EventPlus_.Controllers.PresencaController.Delete(System.Guid)">
-            <summary>
-            Endpoint para deletar presenças
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
         <member name="M:EventPlus_.Controllers.PresencaController.Get(System.Guid)">
             <summary>
             Endpoint para listar suas presenças

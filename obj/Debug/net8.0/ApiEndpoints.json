@@ -223,15 +223,20 @@
   },
   {
     "ContainingType": "EventPlus_.Controllers.PresencaController",
-    "Method": "Delete",
+    "Method": "Put",
     "RelativePath": "api/Presenca/{id}",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "presenca",
+        "Type": "Presenca",
         "IsRequired": true
       }
     ],

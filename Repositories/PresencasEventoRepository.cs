@@ -123,17 +123,12 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                // Tentar apenas contar as presenças para ver se o erro está na consulta
-                var listaPresenca = _context.Presencas.ToList();
-                Console.WriteLine($"Total de presenças: {listaPresenca.Count}");  // Exibe a quantidade no console
+                List<Presenca> listaPresenca = _context.Presencas.ToList();
                 return listaPresenca;
             }
             catch (Exception ex)
             {
-                // Logar erro detalhado
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                throw new ApplicationException("Erro ao listar as presenças.", ex);
+                throw;
             }
         }
 

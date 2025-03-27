@@ -397,16 +397,14 @@
       }
     },
     "/api/Presenca/{id}": {
-      "delete": {
+      "put": {
         "tags": [
           "Presenca"
         ],
-        "summary": "Endpoint para deletar presenças",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -414,6 +412,25 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Presenca"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Presenca"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Presenca"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"

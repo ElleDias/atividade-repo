@@ -12,7 +12,7 @@ namespace EventPlus_.Controllers
     [Produces("application/json")]
     public class PresencaController : ControllerBase
     {
-         private readonly IPresencaEventoRepository _presencaRepository;
+        private readonly IPresencaEventoRepository _presencaRepository;
         public PresencaController(IPresencaEventoRepository presencaRepository)
         {
             _presencaRepository = presencaRepository;
@@ -84,25 +84,19 @@ namespace EventPlus_.Controllers
 
         }
 
-        /// <summary>
-        /// Endpoint para deletar presenças
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        [HttpPut("{id}")]
+        public IActionResult Put (Guid id, Presenca presenca)
         {
             try
             {
-                _presencaRepository.Deletar(id);
+                _presencaRepository.Atualizar(id, presenca);
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception error)
             {
 
-                throw;
+                return BadRequest(error.Message);
             }
-
         }
 
         /// <summary>
