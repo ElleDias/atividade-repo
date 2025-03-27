@@ -2,18 +2,25 @@
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
 using EventPlus_.Utils;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 
 namespace EventPlus_.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly EventContext _context;
-        public UsuarioRepository(EventContext context)
-        {
-            _context = context;
-        }
+
+///////////////***********************************
+    private readonly EventContext? _context;
+
+    public UsuarioRepository(EventContext? context)
+    {
+        _context = context;
+    }
 
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
@@ -50,7 +57,7 @@ namespace EventPlus_.Repositories
                 throw;
             }
         }
-        }
+
 
         public Usuario BuscarPorId(Guid id)
         {

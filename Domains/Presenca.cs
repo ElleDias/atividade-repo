@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
     [Table("Presenca")]
-    public class Presenca
+public class Presenca
 {
     [Key]
     public Guid PresencaID { get; set; }
 
-    public Guid EventoID { get; set; }
+    public Guid EventosID { get; set; }
     [ForeignKey("EventoID")]
     public Eventos Evento { get; set; }
 
@@ -19,4 +19,3 @@ using System.ComponentModel.DataAnnotations;
     [Column(TypeName = "BIT")]
     public bool? Situacao { get; set; }
 }
-    

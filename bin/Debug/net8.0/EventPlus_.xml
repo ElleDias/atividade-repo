@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventPlus_</name>
+    </assembly>
+    <members>
+        <member name="M:EventPlus_.Controllers.ComentarioEventoController.Get(System.Guid)">
+            <summary>
+            Endpoint para listar Feedbacks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.ComentarioEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint para deletar Feedbacks
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.ComentarioEventoController.GetById(System.Guid,System.Guid)">
+            <summary>
+            Endpoint para buscar Feedbacks por Id dos usuarios
+            </summary>
+            <param name="UsuarioId"></param>
+            <param name="EventoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.PresencaController.Get">
+            <summary>
+            Endpoint para Listar Presenças
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.PresencaController.Post(Presenca)">
+            <summary>
+            Endpoint para Inscrever(Cadastrar presença)
+            </summary>
+            <param name="novaPresenca"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.PresencaController.GetById(System.Guid)">
+            <summary>
+            Endpoint para buscar por id as presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.PresencaController.Delete(System.Guid)">
+            <summary>
+            Endpoint para deletar presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controllers.PresencaController.Get(System.Guid)">
+            <summary>
+            Endpoint para listar suas presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.LoginController.Login(EventPlus_.Utils.LoginDTO)">
+            <summary>
+            Endpoint para Login pelo seu Id
+            </summary>
+            <param name="id">id do genero buscado</param>
+            <returns>GEnero buscado</returns>
+        </member>
+        <member name="T:EventPlus_.Migrations.AddMigrationEventosPlus">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:EventPlus_.Migrations.DbEventPlus">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

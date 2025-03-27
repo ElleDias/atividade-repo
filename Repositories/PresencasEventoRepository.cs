@@ -118,6 +118,7 @@ namespace EventPlus_.Repositories
             }
         }
 
+
         public List<Presenca> Listar()
         {
             try
@@ -151,4 +152,5 @@ namespace EventPlus_.Repositories
             }
         }
     }
-}
+    }
+
